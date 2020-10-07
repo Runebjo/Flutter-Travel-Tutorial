@@ -31,11 +31,14 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   ),
                 ],
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image(
-                  image: AssetImage(widget.destination.imageUrl),
-                  fit: BoxFit.cover,
+              child: Hero(
+                tag: widget.destination.imageUrl,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Image(
+                    image: AssetImage(widget.destination.imageUrl),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
@@ -68,7 +71,54 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   )
                 ],
               ),
-            )
+            ),
+            Positioned(
+              left: 20,
+              bottom: 20,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.destination.city,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.2),
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        FontAwesomeIcons.locationArrow,
+                        size: 15,
+                        color: Colors.white70,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 5,
+                        ),
+                        child: Text(
+                          widget.destination.country,
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Positioned(
+              right: 20,
+              bottom: 20,
+              child: Icon(
+                Icons.location_on,
+                color: Colors.white70,
+                size: 25,
+              ),
+            ),
           ],
         )
       ],
